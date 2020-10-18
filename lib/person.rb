@@ -10,67 +10,76 @@ class Person
     end
 
 
-    def happiness(number)
+    def happiness=(happiness)
+        @happiness = happiness
         @happiness = 10 if @happiness > 10
         @happiness = 0 if @happiness < 0
-        @happiness = number
+        @happiness
     end
 
-    def hygiene(number)
+    def hygiene=(hygiene)
+        @hygiene = hygiene
         @hygiene = 10 if @hygiene > 10
         @hygiene = 0 if @hygiene < 0
-        @hygiene= (number)
+        @hygiene
     end
 
 
     def clean?
-        hygiene > 7
+        if @hygiene > 7
+            return true
+        else
+            return false
+        end
     end
 
 
-     def happy?
-        happiness > 7
-     end
 
-
-    def get_paid(salary)
-        self.bank_account+= salary
-        self.happiness +=1
-        "all about the benjamins"
+    def happy?
+        if @happiness > 7
+            return true 
+        else 
+            return false
+        end
     end
 
 
-     def take_bath
+    def get_paid(bank)
+        self.bank_account += bank
+        return "all about the benjamins"
+    end
+
+
+    def take_bath
         self.hygiene += 4
-     "♪ Rub-a-dub just relaxing in the tub ♫".
-     end
-
+        return "♪ Rub-a-dub just relaxing in the tub ♫"
+    end
 
     def work_out
         self.hygiene -= 3
         self.happiness += 2
-    "♪ another one bites the dust ♫".
+        return "♪ another one bites the dust ♫"
     end
 
 
     def call_friend(buddy)
         self.happiness += 3
         buddy.happiness += 3
-        "Hi #{buddy.name}! It's #{self.name}. How are you?"
+        return "Hi #{buddy.name}! It's #{self.name}. How are you?"
     end
 
 
     def start_conversation(person, topic)
         if topic == "politics"
+            self.happiness -=2
+            person.happiness -=2
+            "blah blah partisan blah lobbyist"
+        elsif topic == "weather"
             self.happiness +=1
             person.happiness +=1
-            "blah blah blah blah blah lobbyist".
-        elseif topic == "weather"
-            self.happiness +=1
-            person.happiness +=1
-            "blah blah blah blah blah rain"
+            "blah blah sun blah rain"
         else
-           "blah blah blah blah blah"
-        
+            "blah blah blah blah blah"
+        end   
     end
 end
